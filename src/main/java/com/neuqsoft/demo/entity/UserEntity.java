@@ -7,6 +7,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @Author: chensz
@@ -15,12 +16,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Data
-@Table(name = "person")
-@ApiModel(description = "员工信息",value = "Person")
-public class Person {
+@Table(name = "user")
+@ApiModel(description = "个人信息",value = "UserEntity")
+public class UserEntity implements Serializable {
 
     @Id
-    @ApiModelProperty("员工号")
+    @ApiModelProperty("id")
     private  String id;
 
     @ApiModelProperty("员工姓名")

@@ -1,9 +1,13 @@
+server:
+  port: 9090
+
 spring:
+
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.30.4.204:3306/apis?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-    username: apis
-    password: apis
+    url: jdbc:mysql://localhost:3306/hello?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
 
   jpa:
     database: MYSQL

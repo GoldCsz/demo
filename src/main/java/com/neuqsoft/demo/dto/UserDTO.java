@@ -10,8 +10,8 @@ import lombok.Data;
  * @Description: 常用的属性值
  */
 @Data
-@ApiModel(value = "PersonDTO",description = "员工的基本信息dto")
-public class PersonDTO {
+@ApiModel(value = "UserDTO",description = "员工的基本信息dto")
+public class UserDTO {
 
     @ApiModelProperty("姓名")
     private String name;
