@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -36,6 +37,9 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
    @LogAnnotation(value = "查询所有的人员",params = true,result = true)
    public List<UserEntity> findAllPerson(){
         return userRepo.findAll();
@@ -49,8 +53,9 @@ public class UserService {
     @LogAnnotation(value = "查询某个员工",params = true,result = true)
     public UserEntity findById(String id){
        UserEntity person=userRepo.findAllById(id);
-       person.setName("张飞");
-       userRepo.save(person);
+      redisTemplate.opsForValue().set(id,person);
+      person=(UserEntity) redisTemplate.opsForValue().get(id);
+      System.out.println(person);
        return person;
     }
 
